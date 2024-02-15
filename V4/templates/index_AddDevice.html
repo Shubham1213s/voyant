@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Device</title>
+
+    <style>
+        .add-device {
+            margin-left: 50px;
+            margin-top: 80px;
+        }
+        form {
+            width: 100%;   
+
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+        .row-last1 {
+            display: inline-block;    
+            padding-top: 0px;
+            padding-left: 250px;
+        
+        }
+        .btn1{
+            height: 40px;
+            width: 120px;
+            border: 1px solid ;
+            border-radius: 5px;
+            font-family: Inter, 'Source Sans Pro';
+            cursor: pointer;
+        }
+        .btn1:hover{
+            background-color: rgb(235, 153, 31);
+            border: none;
+        }
+        .input-group {
+            flex: 1;
+        }
+        .input-group label {
+            font-family: Inter, 'Source Sans Pro';
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .input-group input{
+            margin-right: 5px;
+            height: 24px;
+            width: 170px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        .input-group input[type="text"]{
+            padding: 7px;
+            margin-right: 120px;    
+            font-family: Inter, 'Source Sans Pro';
+            font-size: 17px;
+        }
+        .input-group input[type="number"]{
+            padding: 5px;
+            margin-right: 120px;    
+            font-family: Inter, 'Source Sans Pro';
+        }
+        .input-group input[type="date"]{
+            padding: 5px;
+            margin-right: 120px;    
+            font-family: Inter, 'Source Sans Pro';
+            font-size: 17px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="add-device">
+        <form id="myForm">
+            <div class="row">
+                <div class="input-group">
+                    <label for="DeviceName">DeviceName<span style="color: red;">*</span></label>
+                    <input type="text" id="DeviceName" name="DeviceName" placeholder="Enter device name"  required>
+                </div>
+                <div class="input-group">
+                    <label for="DeviceTag">DeviceTag<span style="color: red;">*</span></label>
+                    <input type="text" id="DeviceTag" name="DeviceTag" placeholder="Enter device tag" required>
+                </div>
+                <div class="input-group">
+                    <label for="IMEI">IMEI<span style="color: red;">*</span></label>
+                    <input type="text" id="IMEI" name="IMEI" placeholder="Enter IMEI" maxlength="15" inputmode="numeric" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <label for="SMSNumber">SMSNumber<span style="color: red;">*</span></label>
+                    <input type="text" id="SMSNumber" name="SMSNumber" placeholder="Enter SMS Number" maxlength="10" inputmode="numeric" required>
+                </div>
+                <div class="input-group">
+                    <label for="Latitude">Latitude<span style="color: red;">*</span></label>
+                    <input type="text" id="Latitude" name="Latitude" placeholder="Enter Latitude" required>
+                </div>
+                <div class="input-group">
+                    <label for="Longitude">Longitude<span style="color: red;">*</span></label>
+                    <input type="text" id="Longitude" name="Longitude" placeholder="Enter Longitude" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <label for="Location">Location<span style="color: red;">*</span></label>
+                    <input type="text" id="Location" name="Location" placeholder="Enter Location" required>
+                </div>
+                <div class="input-group">
+                    <label for="MfgDate">MfgDate<span style="color: red;">*</span></label>
+                    <input type="date" id="MfgDate" name="MfgDate" required>
+                </div>
+                <div class="input-group">
+                    <label for="MfgDate">DeviceType<span style="color: red;">*</span></label>
+                    <input type="text" id="DeviceType" name="DeviceType" placeholder="Enter DeviceType" required>
+                </div>
+            </div>
+            <div class="row-last1">
+                <input type="submit" value="Submit" class="btn1" onclick="submitForm()">
+                <button style="margin-left: 280px;" type="button" class="btn1" onclick="goBack()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            // Get values from the form
+            var IMEI = document.getElementById('IMEI').value;
+            var SMSNumber = document.getElementById('SMSNumber').value;
+            var DeviceName = document.getElementById('DeviceName').value;
+            var DeviceTag = document.getElementById('DeviceTag').value;
+            var MfgDate = document.getElementById('MfgDate').value;
+            var Latitude = document.getElementById('Latitude').value;
+            var Longitude = document.getElementById('Longitude').value;
+            var Location = document.getElementById('Location').value;
+            var DeviceType = document.getElementById('DeviceType').vlue;
+
+            // Check for empty values
+            if (IMEI === '' || DeviceName === '' || DeviceTag === '' || MfgDate === '' || SMSNumber === '' || Latitude === '' || Longitude === '' || Location === '' || DeviceType === '') {
+                alert("Please fill in all mandatory fields.");
+            } else {
+                // Validate IMEI length (15 digits) and SMSNumber length (10 digits)
+                if (IMEI.length === 15 && SMSNumber.length === 10) {
+                    // If valid, proceed with form submission
+                    var formData = new FormData(document.getElementById('myForm'));
+
+                    fetch('/submit', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        document.getElementById('myForm').reset();
+                    })
+                    .catch(error => console.error('Error:', error));
+                } else {
+                    // If not valid, display an error message
+                    alert("Please enter a valid IMEI (15 digits) and SMSNumber (10 digits).");
+                }
+            }
+        }
+
+        function goBack() {
+            // You can use window.history.back() to go back one step in the browser history
+            // Alternatively, you can use window.location.href = "your_page_url" to navigate to a specific page
+            window.location.href = "{{ url_for('index') }}";
+        }
+    </script>
+
+</body>
+</html>
