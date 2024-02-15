@@ -1,0 +1,207 @@
+*{
+    border: border-box;
+    margin: 0px;
+}
+
+.navbar{
+    width: 212px;
+    height: 100%;
+    background: orange;
+    color: white;
+    border-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-logo{
+    height:100px;
+    width: 206px;
+    padding-left: 0px;
+}
+
+.logo{
+    background-image: url("logo.png");
+    height: 100px;
+    width: 100%;
+    background-size: cover;
+    border: 2px solid navy;
+}
+
+.logo:hover{
+    border: 2px solid aqua;
+}
+
+.search-bar{
+    margin-left: 2px;
+    margin-top: 20px;
+    display: flex;
+    height: 30px;
+    width: 208px;
+    border: 1px solid black;
+    background-color: black;
+}
+
+.action{
+    display: flex;
+}
+
+.search-icon-button{
+    padding-top: 5px;   /* padding: with respect to itself. from within its own boundaries. */
+    margin-left: 1px;         /* margin: with respect to adjacent */
+}
+
+.search-icon-button:hover{
+    background-color: orangered;
+    cursor: pointer;
+}
+
+a{
+    color: black;
+}
+a:hover{
+    color: grey;
+}
+
+.Home{
+    color: black;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-top: 20px;
+    font-size: 20px;
+    display: flex;
+}
+.HomeT{
+    display: flex;
+    text-decoration: none;
+}
+.HomeT:hover{
+    color: grey;
+    cursor: pointer;
+}
+
+.Add-Device{
+    color: black;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-top: 20px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.Add:hover{
+    color: grey;
+    cursor: pointer;
+}
+
+.AllD{
+    color: black;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-top: 20px;
+    font-size: 20px;
+    display: flex;
+}
+.AllDe{
+    display: flex;
+    color: black;
+}
+.AllDe:hover{
+    color: grey;
+    cursor: pointer;
+}
+
+.Logs{
+    color: black;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-top: 20px;
+    font-size: 20px;
+    display: flex;
+}
+.LogsT{
+    display: flex;
+}
+.LogsT:hover{
+    color: grey;
+    cursor: pointer;
+}
+
+.Logout{
+    color: black;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding-top: 20px;
+    font-size: 20px;
+    display: flex;
+}
+.LogT{
+    display: flex;
+}
+.LogT:hover{
+    color: grey;
+    cursor: pointer;
+}
+
+.total-devices{
+    height: 90px;
+    width: 100%;
+    border: 2px solid black;
+    padding-top: 10px;
+    margin-left: 210px;
+    margin-top: 0px;
+    font-size: 20px;
+    display: flex;
+    background-color: #FFD580;
+    position: fixed;
+}
+
+/* .dashboard{
+    height: 50px;
+    border: 2px solid black;
+    padding-top: 18px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 80px;
+    font-size: 20px;
+    border-radius: 5%;
+    background-color: #ebf6f5;
+} */
+
+.dashboard{
+    margin-left: 80px;
+    padding-top: 20px;
+}
+
+.length{
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 200px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.user{
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 200px;
+    font-size: 20px;
+    text-align: center;
+}
+
+table {
+    margin-top: 90px;
+    margin-left: 215px;
+    border-collapse: collapse;
+    width: 82%;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
